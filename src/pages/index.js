@@ -2,6 +2,7 @@ import OrderFilter from '@/Components/OrderFilter';
 import { Header } from '@/styles/header';
 import Head from 'next/head';
 import { Main } from './styles';
+import Propertie from '@/Components/Propertie';
 
 export default function Home() {
   return (
@@ -17,6 +18,9 @@ export default function Home() {
       </Header>
       <Main>
         <OrderFilter />
+
+        <Propertie />
+        <Propertie />
       </Main>
     </>
   );
