@@ -8,4 +8,10 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  @media (min-width: 768px) {
+    & {
+      max-width: 60%;
+    }
+  }
 `;
