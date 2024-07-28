@@ -6,6 +6,7 @@ export const PropertieContainer = styled.div`
   gap: 8px;
 
   background: rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 `;
 
 export const Content = styled.div`

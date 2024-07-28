@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Content, PropertieContainer } from './styles';
 import { useState } from 'react';
 import Modal from '../Modal';
+import ContactForm from '../ContactForm';
 
 function Propertie() {
   const [open, setOpen] = useState(false);
@@ -9,7 +10,7 @@ function Propertie() {
   return (
     <>
       <Modal>
-        <Modal.Trigger>
+        <Modal.Trigger asChild>
           <PropertieContainer>
             <Image
               src='https://images.unsplash.com/photo-1492659991124-ba70990ba2f4?q=80&w=1922&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
@@ -44,7 +45,7 @@ function Propertie() {
         </Modal.Trigger>
 
         <Modal.Content title="Entre em contato conosco">
-          <h1>oi</h1>
+          <ContactForm />
         </Modal.Content>
       </Modal>
     </>
