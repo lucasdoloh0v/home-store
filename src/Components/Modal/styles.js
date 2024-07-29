@@ -19,6 +19,12 @@ export const Content = styled(DialogContent)`
   background-color: white;
   padding: 8px;
   border-radius: 8px;
+
+  @media (min-width: 768px) {
+    & {
+      max-width: 30%;
+    }
+  }
 `;
 
 export const ModalHeader = styled.div`

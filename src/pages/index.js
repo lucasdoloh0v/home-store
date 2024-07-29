@@ -3,8 +3,31 @@ import { Header } from '@/styles/header';
 import Head from 'next/head';
 import { Main } from './styles';
 import Propertie from '@/Components/Propertie';
+import { api } from '@/lib/axios';
+import { useCallback, useEffect, useState } from 'react';
 
-export default function Home() {
+export default function Home({ properties }) {
+  const [ordenatedProperties, setOrdenatedProperties] = useState(properties);
+  const [order, setOrder] = useState('');
+
+  useEffect(() => {
+    console.log('aqui', order);
+    switch (order) {
+      case 'growing':
+        const ordenatedPropertiesGrowing = properties.sort(
+          (propertieA, propertieB) => propertieA.price - propertieB.price
+        );
+        setOrdenatedProperties([...ordenatedPropertiesGrowing]);
+        break;
+      case 'descending':
+        const ordenatedPropertiesDescending = properties.sort(
+          (propertieA, propertieB) => propertieB.price - propertieA.price
+        );
+        setOrdenatedProperties([...ordenatedPropertiesDescending]);
+        break;
+    }
+  }, [order, properties]);
+
   return (
     <>
       <Head>
@@ -17,11 +40,29 @@ export default function Home() {
         <h1>Venda de imóveis</h1>
       </Header>
       <Main>
-        <OrderFilter />
+        <OrderFilter setOrder={setOrder} />
 
-        <Propertie />
-        <Propertie />
+        {ordenatedProperties.map((propertie) => (
+          <Propertie key={propertie.id} propertie={propertie} />
+        ))}
       </Main>
     </>
   );
 }
+
+export const getStaticProps = async () => {
+  const properties = (await api.get('properties')).data;
+
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 5000); // 5 seconds in milliseconds
+  });
+
+  return {
+    props: {
+      properties,
+    },
+    revalidate: 60 * 60 * 1, //1 hours
+  };
+};

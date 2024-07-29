@@ -56,6 +56,15 @@ export const ToastViewport = styled(Viewport)`
   list-style: none;
   z-index: 2147483647;
   outline: none;
+
+  @media (min-width: 768px;) {
+    & {
+      position: absolute;
+      bottom: 100%;
+      left: 100%;
+      transform: translate(75%, -150%);
+    }
+  }
 `;
 
 export const ToastRoot = styled(Root)`
@@ -66,47 +75,47 @@ export const ToastRoot = styled(Root)`
     hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
   padding: 12px;
 
-&[data-state='open'] {
-  animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-&[data-state='closed'] {
-  animation: hide 100ms ease-in;
-}
-&[data-swipe='move'] {
-  transform: translateX(var(--radix-toast-swipe-move-x));
-}
-&[data-swipe='cancel'] {
-  transform: translateX(0);
-  transition: transform 200ms ease-out;
-}
-&[data-swipe='end'] {
-  animation: swipeOut 100ms ease-out;
-}
-
-@keyframes hide {
-  from {
-    opacity: 1;
+  &[data-state='open'] {
+    animation: slideIn 150ms cubic-bezier(0.16, 1, 0.3, 1);
   }
-  to {
-    opacity: 0;
+  &[data-state='closed'] {
+    animation: hide 100ms ease-in;
   }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
+  &[data-swipe='move'] {
+    transform: translateX(var(--radix-toast-swipe-move-x));
   }
-  to {
+  &[data-swipe='cancel'] {
     transform: translateX(0);
+    transition: transform 200ms ease-out;
   }
-}
+  &[data-swipe='end'] {
+    animation: swipeOut 100ms ease-out;
+  }
 
-@keyframes swipeOut {
-  from {
-    transform: translateX(var(--radix-toast-swipe-end-x));
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
-  to {
-    transform: translateX(100%);
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
-}
+
+  @keyframes swipeOut {
+    from {
+      transform: translateX(var(--radix-toast-swipe-end-x));
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
 `;

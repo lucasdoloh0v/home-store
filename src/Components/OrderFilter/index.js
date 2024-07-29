@@ -7,9 +7,9 @@ import {
 } from '@radix-ui/react-icons';
 import { ContainerFilter, SelectContent, SelectTrigger } from './styles';
 
-const OrderFilter = () => (
+const OrderFilter = ({setOrder}) => (
   <ContainerFilter>
-    <Select.Root>
+    <Select.Root onValueChange={(value) => setOrder(value)}>
       <SelectTrigger aria-label='Ordenação'>
         <Select.Value placeholder='Filtrar por ordem...' />
         <Select.Icon>
@@ -23,8 +23,8 @@ const OrderFilter = () => (
           </Select.ScrollUpButton>
           <Select.Viewport>
             <Select.Group>
-              <SelectItem value='Crescente'>Crescente</SelectItem>
-              <SelectItem value='Decrescente'>Decrescente</SelectItem>
+              <SelectItem value='growing'>Crescente</SelectItem>
+              <SelectItem value='descending'>Decrescente</SelectItem>
             </Select.Group>
           </Select.Viewport>
           <Select.ScrollDownButton>
