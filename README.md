@@ -7,7 +7,7 @@ First, run the api server:
 ```bash
 npm install
 
-npx json-server db.json
+npx json-server -p 3333 db.json
 ```
 
 Then, run the aplication
