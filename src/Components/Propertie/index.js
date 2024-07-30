@@ -30,7 +30,10 @@ function Propertie({propertie}) {
                 ))}
               </ul>
 
-              <h4>Valor: R$ {propertie.price}</h4>
+              <h4>Valor: {new Intl.NumberFormat('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              }).format(propertie.price)}</h4>
             </Content>
           </PropertieContainer>
         </Modal.Trigger>

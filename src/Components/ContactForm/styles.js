@@ -46,8 +46,9 @@ export const SubmitButton = styled.button`
 
 export const ToastViewport = styled(Viewport)`
   position: fixed;
-  top: -150px;
-  right: -8px;
+  bottom: 55vh;
+  right: -50vw;
+  transform: translate(-100%, 0);
   display: flex;
   flex-direction: column;
   width: 390px;
@@ -56,15 +57,6 @@ export const ToastViewport = styled(Viewport)`
   list-style: none;
   z-index: 2147483647;
   outline: none;
-
-  @media (min-width: 768px;) {
-    & {
-      position: absolute;
-      bottom: 100%;
-      left: 100%;
-      transform: translate(75%, -150%);
-    }
-  }
 `;
 
 export const ToastRoot = styled(Root)`
