@@ -1,4 +1,4 @@
-const { createGlobalStyle } = require("styled-components");
+const { createGlobalStyle } = require('styled-components');
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     -webkit-font-smoothing: antialiased;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   body, input, textarea, button {
